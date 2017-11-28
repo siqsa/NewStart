@@ -37,7 +37,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        setTitle("Login");
+        setTitle("LLogin");
 
         // Already Login
         mFirebaseAuth = FirebaseAuth.getInstance();
