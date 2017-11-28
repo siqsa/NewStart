@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.Auth;
@@ -14,7 +15,10 @@ import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
@@ -22,69 +26,59 @@ import com.google.firebase.auth.GoogleAuthProvider;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private FirebaseAuth mFirebaseAuth;
-    FirebaseAuth.AuthStateListener mFirebaseAuthListener;
-
-    GoogleApiClient mGoogleApiClient;
-    SignInButton googleLoginBtn;
-
-    static final String TAG = LoginActivity.class.getName();
-    static final int RC_GOOGLE_SIGN_IN = 9002;
-
+    private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        setTitle("LaLaogin");
+        mAuth = FirebaseAuth.getInstance();
 
-        // Already Login
-        mFirebaseAuth = FirebaseAuth.getInstance();
-        mFirebaseAuthListener = new FirebaseAuth.AuthStateListener() {
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser currentUser = mFirebaseAuth.getCurrentUser();
-                if (currentUser != null) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user != null) {
                     Toast.makeText(LoginActivity.this, "로그인 성공", Toast.LENGTH_SHORT).show();
-
 
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(intent);
-                    finish();
                 } else {
-                    Toast.makeText(LoginActivity.this, "로그인이 필요합니다", Toast.LENGTH_SHORT).show();
+                    // User is signed out
                 }
             }
         };
+    }
 
-        googleLoginBtn = (SignInButton) findViewById(R.id.google);
-        googleLoginBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
-                startActivityForResult(signInIntent, RC_GOOGLE_SIGN_IN);
-            }
-        });
+    public void onButtonLogin(View v) {
+        String email = ((EditText) findViewById(R.id.emailEditText)).getText().toString();
+        String password = ((EditText) findViewById(R.id.passwordEditText)).getText().toString();
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        //Toast.makeText(LoginActivity.this, "로그인 성공", Toast.LENGTH_SHORT).show();
 
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
-                .requestEmail()
-                .build();
-
+                        if (!task.isSuccessful()) {
+                            Toast.makeText(LoginActivity.this, "로그인 실패", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
     }
 
     @Override
-    protected void onStart() {
+    public void onStart() {
         super.onStart();
-        mFirebaseAuth.addAuthStateListener(mFirebaseAuthListener);
+        mAuth.addAuthStateListener(mAuthListener);
     }
 
     @Override
-    protected void onStop() {
+    public void onStop() {
         super.onStop();
-        if (mFirebaseAuthListener != null) {
-            mFirebaseAuth.removeAuthStateListener(mFirebaseAuthListener);
+        if (mAuthListener != null) {
+            mAuth.removeAuthStateListener(mAuthListener);
         }
     }
 }

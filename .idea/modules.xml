@@ -3,8 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/NewStart.iml" filepath="$PROJECT_DIR$/NewStart.iml" />
+      <module fileurl="file://D:\dev\RelfectNote\NewStart\NewStart.iml" filepath="D:\dev\RelfectNote\NewStart\NewStart.iml" />
       <module fileurl="file://C:\Program Files\NewStart\NewStart.iml" filepath="C:\Program Files\NewStart\NewStart.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://D:\dev\RelfectNote\NewStart\app\app.iml" filepath="D:\dev\RelfectNote\NewStart\app\app.iml" />
       <module fileurl="file://C:\Program Files\NewStart\app\app.iml" filepath="C:\Program Files\NewStart\app\app.iml" />
     </modules>
   </component>
