@@ -52,8 +52,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(intent);
                     finish();
-                }
-                else {
+                } else {
                     Toast.makeText(LoginActivity.this, "로그인이 필요합니다", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -87,30 +86,8 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     @Override
     protected void onStop() {
         super.onStop();
-        if ( mFirebaseAuthListener != null) {
+        if (mFirebaseAuthListener != null) {
             mFirebaseAuth.removeAuthStateListener(mFirebaseAuthListener);
-        }
-    }
-
-    @Override
-    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-        Log.d(TAG, "onConnectionFailed:" + connectionResult);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if ( requestCode == RC_GOOGLE_SIGN_IN ) {
-            GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
-            if ( result.isSuccess() ) {
-                String token = result.getSignInAccount().getIdToken();
-                AuthCredential credential = GoogleAuthProvider.getCredential(token, null);
-                mFirebaseAuth.signInWithCredential(credential);
-            }
-            else {
-                Log.d(TAG, "Google Login Failed." + result.getStatus());
-            }
         }
     }
 }
