@@ -29,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
     SignInButton googleLoginBtn;
 
     static final String TAG = LoginActivity.class.getName();
-    static final int RC_GOOGLE_SIGN_IN = 9001;
+    static final int RC_GOOGLE_SIGN_IN = 9002;
 
 
     @Override
