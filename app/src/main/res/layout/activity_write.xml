@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:text="2017년 11월 29일 수요일"
+        android:hint="2017년 11월 29일 수요일"
         android:id="@+id/dateTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -30,6 +30,7 @@
         android:background="@drawable/submitbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="submitDiary"/>
 
 </RelativeLayout>
