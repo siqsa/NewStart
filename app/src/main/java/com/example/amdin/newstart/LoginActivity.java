@@ -43,7 +43,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (user != null) {
                     Toast.makeText(LoginActivity.this, "로그인 성공", Toast.LENGTH_SHORT).show();
 
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    Intent intent = new Intent(LoginActivity.this, DiaryListActivity.class);
                     startActivity(intent);
                 } else {
                     // User is signed out
@@ -60,7 +60,6 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         //Toast.makeText(LoginActivity.this, "로그인 성공", Toast.LENGTH_SHORT).show();
-
                         if (!task.isSuccessful()) {
                             Toast.makeText(LoginActivity.this, "로그인 실패", Toast.LENGTH_SHORT).show();
                         }

@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "328658843739",
-    "firebase_url": "https://newstart-4c18c.firebaseio.com",
-    "project_id": "newstart-4c18c",
-    "storage_bucket": "newstart-4c18c.appspot.com"
+    "project_number": "988942555433",
+    "firebase_url": "https://newstart-2037f.firebaseio.com",
+    "project_id": "newstart-2037f",
+    "storage_bucket": "newstart-2037f.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:328658843739:android:cad8570864588b7b",
+        "mobilesdk_app_id": "1:988942555433:android:cad8570864588b7b",
         "android_client_info": {
           "package_name": "com.example.amdin.newstart"
         }
       },
       "oauth_client": [
         {
-          "client_id": "328658843739-bnljqrmoqqbm241ojrq8ct8ho253nrnh.apps.googleusercontent.com",
+          "client_id": "988942555433-8bmq53tlq3irbgthm9gilkb9nd0dc4d6.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.amdin.newstart",
@@ -23,13 +23,13 @@
           }
         },
         {
-          "client_id": "328658843739-eelcl61hvj7j2gqhst6fsihso8d4nlq5.apps.googleusercontent.com",
+          "client_id": "988942555433-1bug1m75cfq2j38dmr05v4dc1ud1e56m.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyANNEl9BClly-CP-yZS1z9O9LQvF86R_rE"
+          "current_key": "AIzaSyDmMuIun6jWcM2E0TI9DpCvmq8DAv25K4U"
         }
       ],
       "services": {
@@ -40,7 +40,7 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "328658843739-eelcl61hvj7j2gqhst6fsihso8d4nlq5.apps.googleusercontent.com",
+              "client_id": "988942555433-1bug1m75cfq2j38dmr05v4dc1ud1e56m.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
