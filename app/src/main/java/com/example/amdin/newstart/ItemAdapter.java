@@ -17,7 +17,7 @@ import org.w3c.dom.Text;
 
 import java.util.List;
 
-public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
+public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {//뷰홀더란?->뷰를 담아 두는 뷰 보관 상자
 
     // Provide a direct reference to each of the views within a data item
     // Used to cache the views within the item layout for fast access
@@ -68,7 +68,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
 
     // Usually involves inflating a layout from XML and returning the holder
     @Override
-    public ItemAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ItemAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {//아이템을 위한 뷰를 만들어서 뷰홀더에 넣어서 리턴을 한다.
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
 
@@ -82,16 +82,17 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
 
     // Involves populating data into the item through holder
     @Override
-    public void onBindViewHolder(ItemAdapter.ViewHolder viewHolder, int position) {
+    public void onBindViewHolder(ItemAdapter.ViewHolder viewHolder, int position) {//뷰홀더에 뷰에 position에 해당하는 데이터를 입력한다.
         // Get the data model based on position
         Item contact = mContacts.get(position);
 
         // Set item views based on your views and data model
         TextView textView = viewHolder.showDate;
-        textView.setText(contact.getYear());
+        String a=contact.getYear()+contact.getMonth()+contact.getDay();
+        textView.setText(a);
         TextView textView1 = viewHolder.showContents;
-
-    }
+        textView1.setText(contact.getText());
+            }
 
     // Returns the total count of items in the list
     @Override
