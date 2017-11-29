@@ -66,7 +66,13 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 });
     }
+public void onClickSingIn(View v){
 
+Intent intent=new Intent(getApplicationContext(),JoinActivity.class);
+startActivity(intent);
+
+
+}
     @Override
     public void onStart() {
         super.onStart();

@@ -4,17 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.amdin.newstart.LoginActivity">
+    tools:context="com.example.amdin.newstart.JoinActivity">
 
     <EditText
-        android:id="@+id/emailEditText"
+        android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Email"
         android:paddingTop="140dp" />
 
     <EditText
-        android:id="@+id/passwordEditText"
+        android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/emailEditText"
@@ -29,22 +29,22 @@
         android:paddingTop="20dp">
 
         <Button
-            android:id="@+id/loginButton"
+            android:id="@+id/joinBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:onClick="onButtonLogin"
+            android:onClick="onJoin"
             android:background="@drawable/submitbtn"
-            android:text="Login" />
+            android:text="join" />
 
         <Button
-            android:id="@+id/joinButton"
+            android:id="@+id/cancelBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/passwordEditText"
             android:layout_centerHorizontal="true"
-            android:text="Join"
-            android:onClick="onClickSingIn"
+            android:text="cancel"
+            android:onClick="onCancel"
             android:background="@drawable/submitbtn"
             android:layout_marginLeft="10dp"/>
 
