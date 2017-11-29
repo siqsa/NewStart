@@ -24,6 +24,6 @@
         android:layout_weight="0.8"
         android:background="@drawable/contextbackground"
         android:paddingTop="150dp"
-        android:text="오늘은 프로젝트를 했다."
+        android:text="오늘은 프로젝트를 했다"
         android:textAlignment="center" />
 </LinearLayout>
