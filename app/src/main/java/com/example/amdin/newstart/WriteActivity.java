@@ -25,6 +25,7 @@ public class WriteActivity extends AppCompatActivity {
         setTitle("Write");
 
         datetextView = (TextView)findViewById(R.id.dateTextView);
+
     }
 
     public void setDate() {
