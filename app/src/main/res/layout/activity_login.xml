@@ -25,15 +25,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/passwordEditText"
-        android:paddingLeft="100dp">
+        android:paddingLeft="90dp"
+        android:paddingTop="20dp">
 
         <Button
             android:id="@+id/loginButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
             android:onClick="onButtonLogin"
             android:text="Login" />
 
@@ -43,8 +42,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/passwordEditText"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:text="Join" />
+            android:text="Join"
+            android:layout_marginLeft="10dp"/>
 
     </LinearLayout>
 
