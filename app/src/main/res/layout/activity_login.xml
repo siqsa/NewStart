@@ -7,30 +7,46 @@
     tools:context="com.example.amdin.newstart.LoginActivity">
 
     <EditText
-        android:paddingTop="140dp"
-        android:hint="Email"
         android:id="@+id/emailEditText"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:hint="Email"
+        android:paddingTop="140dp" />
 
     <EditText
-        android:inputType="textPassword"
-        android:hint="PassWord"
         android:id="@+id/passwordEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/emailEditText"/>
+        android:layout_below="@id/emailEditText"
+        android:hint="PassWord"
+        android:inputType="textPassword" />
 
-    <Button
-        android:id="@+id/loginButton"
-        android:text="Login"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/passwordEditText"
-        android:layout_marginTop="20dp"
-        android:layout_centerHorizontal="true"
-        android:onClick="onButtonLogin"
-        />
+        android:paddingLeft="100dp">
+
+        <Button
+            android:id="@+id/loginButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:onClick="onButtonLogin"
+            android:text="Login" />
+
+        <Button
+            android:id="@+id/joinButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/passwordEditText"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:text="Join" />
+
+    </LinearLayout>
 
 
 </RelativeLayout>
