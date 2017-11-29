@@ -5,16 +5,25 @@
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/date"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/date"/>
+        android:layout_height="12dp"
+        android:layout_weight="0.2"
+        android:background="@drawable/datebackground"
+        android:paddingTop="60dp"
+
+        android:text="2017년 11월 29일"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        android:textColor="#FFFFFF"/>
+
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/context"
-        android:background="#"/>
-
-
-
-
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_weight="0.8"
+        android:background="@drawable/contextbackground"
+        android:paddingTop="150dp"
+        android:text="오늘은 프로젝트를 했다."
+        android:textAlignment="center" />
 </LinearLayout>
