@@ -9,10 +9,21 @@
         android:id="@+id/dateTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:textSize="15dp"
-        android:textAlignment="center"
-        />
+        android:padding="12dp"
+        android:layout_marginLeft="50dp"
+        android:textSize="18dp" />
+
+    <Button
+        android:layout_marginTop="8dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_above="@+id/writeEditText"
+        android:layout_alignRight="@+id/dateTextView"
+        android:text="Submit"
+        android:background="@drawable/submitbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:onClick="submitDiary"/>
 
     <EditText
         android:hint="여기에 일기를 작성해주세요!"
@@ -24,13 +35,6 @@
         android:layout_margin="10dp"
         android:textAlignment="center"/>
 
-    <Button
-        android:layout_below="@+id/writeEditText"
-        android:text="Submit"
-        android:background="@drawable/submitbtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:onClick="submitDiary"/>
+
 
 </RelativeLayout>

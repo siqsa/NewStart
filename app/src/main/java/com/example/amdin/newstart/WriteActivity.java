@@ -6,8 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
-import java.text.SimpleDateFormat;
+import java.text.DateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 /**
  * Created by tidy1 on 2017-11-28.
@@ -22,20 +23,17 @@ public class WriteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_write);
 
-        setTitle("Write");
-
         datetextView = (TextView)findViewById(R.id.dateTextView);
+        setDate();
 
     }
 
     public void setDate() {
 
-        long now = System.currentTimeMillis();
-        Date date = new Date(now);
+        Date now = new Date();
 
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일 e요일");
-        String getTime = sdf.format(date);
-
+        DateFormat format = DateFormat.getDateInstance(DateFormat.FULL, Locale.KOREA);
+        String getTime = format.format(now);
         datetextView.setText(getTime);
     }
 
