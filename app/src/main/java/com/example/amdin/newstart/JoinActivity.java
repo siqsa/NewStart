@@ -69,7 +69,7 @@ if(getEdit.getBytes().length<=0){
                             myRef.child(key).child("year").setValue(calendar.YEAR);
                             myRef.child(key).child("month").setValue(calendar.MONTH);
                             myRef.child(key).child("day").setValue((calendar.DATE)+1);
-                            myRef.child(key).child("text").setValue("일기내용");
+                            myRef.child(key).child("diary").child("").setValue("");
                             Toast.makeText(getApplicationContext(),"SignUp Success",Toast.LENGTH_SHORT).show();
 
 
