@@ -39,10 +39,11 @@ if(getEdit.getBytes().length<=0){
     Toast.makeText(this,"You should fill fields",Toast.LENGTH_SHORT).show();
 }
 
-       else{ mAuth.signInWithEmailAndPassword(email.getText().toString(),pwd.getText().toString()).addOnCompleteListener(
+       else{ mAuth.createUserWithEmailAndPassword(email.getText().toString(),pwd.getText().toString()).addOnCompleteListener(
                 this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+
                         if(!task.isSuccessful()){
                             Toast.makeText(getApplicationContext(),"SignUp Failed",Toast.LENGTH_SHORT).show();
                         }
