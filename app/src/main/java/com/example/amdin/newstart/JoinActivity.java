@@ -16,6 +16,9 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Calendar;
+import java.util.Date;
+
 
 /**
  * Created by tidy1 on 2017-11-28.
@@ -26,9 +29,11 @@ public class JoinActivity extends AppCompatActivity {
     private FirebaseAuth.AuthStateListener mAuthListener;
     public FirebaseDatabase database;
     DatabaseReference myRef;
-EditText email;
-EditText pwd;
+private EditText email;
+private EditText pwd;
     String userId;
+    Date date;
+   Calendar calendar;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +45,7 @@ EditText pwd;
     email=findViewById(R.id.email);
     pwd=findViewById(R.id.password);
     userId="ID";
+    calendar=Calendar.getInstance();
     }
     public void onJoin(View v){
 String getEdit=email.getText().toString();
@@ -60,7 +66,10 @@ if(getEdit.getBytes().length<=0){
                             myRef.child(key).child("ID").setValue(email.getText().toString());
                             myRef.child(key).child("Password").setValue(pwd.getText().toString());
                             myRef.child(key).child("userKey").setValue(key);
-
+                            myRef.child(key).child("year").setValue(Calendar.YEAR);
+                            myRef.child(key).child("month").setValue(Calendar.MONTH);
+                            myRef.child(key).child("day").setValue(Calendar.YEAR);
+                            myRef.child(key).child("text").setValue("일기내용");
                             Toast.makeText(getApplicationContext(),"SignUp Success",Toast.LENGTH_SHORT).show();
 
 
