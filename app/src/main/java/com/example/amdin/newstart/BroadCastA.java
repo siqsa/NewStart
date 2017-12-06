@@ -10,7 +10,7 @@ import android.content.Intent;
 
     public class BroadCastA extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
-        Intent service_intent=new Intent(context,BroadcastS.class);
+        Intent service_intent=new Intent(context,BroadCastB.class);
         context.startService(service_intent);
     }
 }
