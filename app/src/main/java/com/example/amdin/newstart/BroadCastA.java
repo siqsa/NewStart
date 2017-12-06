@@ -12,5 +12,6 @@ import android.content.Intent;
     public void onReceive(Context context, Intent intent) {
         Intent service_intent=new Intent(context,BroadCastB.class);
         context.startService(service_intent);
+
     }
 }
