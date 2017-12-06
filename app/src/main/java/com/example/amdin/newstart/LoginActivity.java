@@ -29,11 +29,12 @@ public class LoginActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
     }
+
     public void onButtonLogin(View v) {
         String email = ((EditText) findViewById(R.id.emailEditText)).getText().toString();
         String password = ((EditText) findViewById(R.id.passwordEditText)).getText().toString();
-        if(email.getBytes().length<=0){
-            Toast.makeText(this,"사용자 정보를 입력하세요.",Toast.LENGTH_SHORT).show();
+        if (email.getBytes().length <= 0) {
+            Toast.makeText(this, "사용자 정보를 입력하세요.", Toast.LENGTH_SHORT).show();
         }
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -41,8 +42,9 @@ public class LoginActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (!task.isSuccessful()) {
                             Toast.makeText(LoginActivity.this, "로그인 실패", Toast.LENGTH_SHORT).show();
-                        }
-                        else {
+                        } else {
+
+
                             // 고유번호 가져오기.
                             Intent intent = new Intent(LoginActivity.this, DiaryListActivity.class);
                             startActivity(intent);
@@ -50,13 +52,15 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 });
     }
-public void onClickSingIn(View v){
 
-Intent intent=new Intent(getApplicationContext(),JoinActivity.class);
-startActivity(intent);
+        public void onClickSingIn(View v) {
+
+        Intent intent = new Intent(getApplicationContext(), JoinActivity.class);
+        startActivity(intent);
 
 
-}
+    }
+
     @Override
     public void onStart() {
         super.onStart();
@@ -67,7 +71,8 @@ startActivity(intent);
         super.onStop();
 
     }
-    public void onBackPressed(){
+
+    public void onBackPressed() {
         super.onBackPressed();
 
     }

@@ -70,11 +70,11 @@ public class JoinActivity extends AppCompatActivity {
                             } else {
 
                                 //String iniNum=String.valueOf(b);
-                                myRef = database.getReference("use");
+                                myRef = database.getReference("user");
                                 String key = myRef.push().getKey();
                                 myRef.child(key).child("ID").setValue(email.getText().toString());
                                 myRef.child(key).child("Password").setValue(pwd.getText().toString());
-                                myRef.child(key).child("Number").setValue(key);
+                                myRef.child(key).child("Number").setValue(System.currentTimeMillis());
                                 Toast.makeText(getApplicationContext(), "SignUp Success", Toast.LENGTH_SHORT).show();
                                 Intent back = new Intent(getApplicationContext(), LoginActivity.class);
                                 startActivity(back);
