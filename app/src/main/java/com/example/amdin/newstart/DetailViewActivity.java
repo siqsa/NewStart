@@ -21,8 +21,7 @@ public class DetailViewActivity extends AppCompatActivity {
 
         editText = findViewById(R.id.DetailEditText);
         editText.setText(text);
-        editText.setFocusable(false);
-        editText.setClickable(false);
+        editText.setEnabled(false);
 
         button = findViewById(R.id.DetaildViewButton);
         button.setOnClickListener(new View.OnClickListener() {
@@ -31,24 +30,14 @@ public class DetailViewActivity extends AppCompatActivity {
                 String currentText = button.getText().toString();
 
                 if (currentText.equals("수정하기")) {
-                    editText.setFocusableInTouchMode(true);
-                    editText.setClickable(true);
-                    editText.setFocusable(true);
-                    //showKeyboard(editText);
+                    editText.setEnabled(true);
                     button.setText("수정완료");
                 }
                 else if (currentText.equals("수정완료")) {
                     button.setText("수정하기");
-                    editText.setFocusableInTouchMode(true);
-                    editText.setClickable(true);
-                    editText.setFocusable(true);
+                    editText.setEnabled(false);
                 }
             }
         });
-    }
-
-    private void showKeyboard(EditText editText) {
-        imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-        imm.showSoftInput(editText, 0);
     }
 }
