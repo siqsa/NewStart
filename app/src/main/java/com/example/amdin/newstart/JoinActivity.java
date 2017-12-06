@@ -66,9 +66,9 @@ if(getEdit.getBytes().length<=0){
                             myRef.child(key).child("ID").setValue(email.getText().toString());
                             myRef.child(key).child("Password").setValue(pwd.getText().toString());
                             myRef.child(key).child("userKey").setValue(key);
-                            myRef.child(key).child("year").setValue(calendar.YEAR);
-                            myRef.child(key).child("month").setValue(calendar.MONTH);
-                            myRef.child(key).child("day").setValue((calendar.DATE)+1);
+                            myRef.child(key).child("year").setValue(calendar.get(Calendar.YEAR));
+                            myRef.child(key).child("month").setValue(calendar.get(Calendar.MONTH));
+                            myRef.child(key).child("day").setValue(calendar.get(Calendar.DAY_OF_MONTH)+1);
                             myRef.child(key).child("diary").child("").setValue("");
                             Toast.makeText(getApplicationContext(),"SignUp Success",Toast.LENGTH_SHORT).show();
 
