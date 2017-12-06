@@ -25,7 +25,7 @@
         android:onClick="submitDiary"/>
 
     <EditText
-        android:hint="여기에 일기를 작성해주세요!"
+        android:hint="일기를 작성해주세요."
         android:id="@+id/writeEditText"
         android:layout_below="@+id/dateTextView"
         android:layout_width="match_parent"

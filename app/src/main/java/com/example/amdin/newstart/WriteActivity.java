@@ -27,9 +27,7 @@ public class WriteActivity extends AppCompatActivity {
     }
 
     public void setDate() {
-
         Date now = new Date();
-
         DateFormat format = DateFormat.getDateInstance(DateFormat.FULL, Locale.KOREA);
         String getTime = format.format(now);
         datetextView.setText(getTime);

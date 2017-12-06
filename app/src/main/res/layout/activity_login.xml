@@ -4,19 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/login"
     tools:context="com.example.amdin.newstart.LoginActivity">
 
     <EditText
+        android:layout_marginTop="130dp"
         android:id="@+id/emailEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Email"
-        android:paddingTop="140dp" />
+        android:background="@drawable/round"
+
+        android:layout_marginHorizontal="20dp"
+        />
 
     <EditText
         android:id="@+id/passwordEditText"
+        android:layout_marginTop="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/round"
+        android:layout_marginHorizontal="20dp"
         android:layout_below="@id/emailEditText"
         android:hint="PassWord"
         android:inputType="textPassword" />
@@ -26,7 +34,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/passwordEditText"
         android:paddingLeft="90dp"
-        android:paddingTop="20dp">
+        android:paddingTop="20dp"
+
+        android:layout_marginTop="20dp">
 
         <Button
             android:id="@+id/loginButton"
@@ -34,7 +44,8 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:onClick="onButtonLogin"
-            android:background="@drawable/submitbtn"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/loginbtn"
             android:text="Login" />
 
         <Button
@@ -43,10 +54,12 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/passwordEditText"
             android:layout_centerHorizontal="true"
+            android:layout_marginLeft="30dp"
             android:text="Join"
+            android:textColor="#FFFFFF"
             android:onClick="onClickSingIn"
-            android:background="@drawable/submitbtn"
-            android:layout_marginLeft="10dp"/>
+            android:background="@drawable/loginbtn"
+            />
 
     </LinearLayout>
 
