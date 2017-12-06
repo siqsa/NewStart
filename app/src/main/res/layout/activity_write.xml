@@ -18,7 +18,7 @@
         android:layout_above="@+id/writeEditText"
         android:layout_alignRight="@+id/dateTextView"
         android:text="작성 완료"
-        android:background="@drawable/submitbtn"
+        android:background="@drawable/alarm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -29,13 +29,21 @@
         android:id="@+id/writeEditText"
         android:layout_below="@+id/dateTextView"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="380dp"
         android:background="@drawable/round_edittext"
         android:layout_margin="10dp"
         android:textAlignment="center"
         android:scrollbars="vertical"
         android:lines="17"
         android:minLines="10"/>
+    <TextView
+        android:id="@+id/alarm"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/alarm"
+        android:text=""
+        android:layout_below="@id/writeEditText"/>
 
 
 
