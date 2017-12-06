@@ -1,6 +1,7 @@
 package com.example.amdin.newstart;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -32,12 +33,12 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth.AuthStateListener mAuthListener;
     public FirebaseDatabase database;
     DatabaseReference myRef;
+    private SharedPreferences aa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
         mAuth = FirebaseAuth.getInstance();
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {

@@ -1,27 +1,18 @@
 package com.example.amdin.newstart;
-
 import android.app.AlarmManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
-
 import java.util.Calendar;
-
-/**
- * Created by tidy1 on 2017-11-28.
- */
-
 public class WriteActivity extends AppCompatActivity {
-
     private TextView datetextView;
     private TextView alarm;
     AlarmManager alarm_manager;
     int hour,minute;
     Calendar calendar;
     int year, month, day;
-
    /* private TimePickerDialog.OnTimeSetListener listener=new TimePickerDialog.OnTimeSetListener() {
         @Override
         public void onTimeSet(TimePicker view, int hourOfDay, int  Minute) {
@@ -47,8 +38,6 @@ public class WriteActivity extends AppCompatActivity {
         }
     };
 */
-
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,19 +45,15 @@ public class WriteActivity extends AppCompatActivity {
         datetextView = (TextView)findViewById(R.id.dateTextView);
         setDate();
     }
-
     public void setDate() {
         calendar=Calendar.getInstance();
         year = calendar.get(Calendar.YEAR);
         month = calendar.get(Calendar.MONTH);
         day = calendar.get(Calendar.DAY_OF_MONTH);
-
         String date;
         date = year + "년 " + month + "월 " + day + "일";
         datetextView.setText(date);
-
     }
-
     public void submitDiary(View v) {
 
     }

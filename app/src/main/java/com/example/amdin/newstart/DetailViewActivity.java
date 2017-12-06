@@ -12,7 +12,6 @@ public class DetailViewActivity extends AppCompatActivity {
     Button button;
     EditText editText;
     private InputMethodManager imm; //전역변수
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

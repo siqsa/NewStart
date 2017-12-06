@@ -1,13 +1,9 @@
 package com.example.amdin.newstart;
-
 import java.util.ArrayList;
-
 /**
  * Created by amdin on 2017-11-22.
  */
-
 public class Item {
-
     String year;
     String month;
     String day;
@@ -36,7 +32,6 @@ public class Item {
     }
     public static ArrayList<Item> createContactsList(int numContacts) {
         ArrayList<Item> contacts = new ArrayList<Item>();
-
         contacts.add(new Item("2017년","11월","29일","오늘은 팀프로젝트를 하러 왔다"));
         contacts.add(new Item("2017년","11월","30일","내일은 끔찍한 목요일"));
         contacts.add(new Item("2017년","12월","01일","벌써 12월이다."));
