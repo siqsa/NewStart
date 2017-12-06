@@ -1,7 +1,6 @@
 package com.example.amdin.newstart;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -75,11 +74,7 @@ public class JoinActivity extends AppCompatActivity {
                                 String key = myRef.push().getKey();
                                 myRef.child(key).child("ID").setValue(email.getText().toString());
                                 myRef.child(key).child("Password").setValue(pwd.getText().toString());
-                                myRef.child(key).child("userKey").setValue(key);
-                                myRef.child(key).child("year").setValue(calendar.get(Calendar.YEAR));
-                                myRef.child(key).child("month").setValue(calendar.get(Calendar.MONTH));
-                                myRef.child(key).child("day").setValue(calendar.get(Calendar.DAY_OF_MONTH) + 1);
-                                myRef.child(key).child("diary").child("").setValue("");
+                                myRef.child(key).child("Number").setValue(key);
                                 Toast.makeText(getApplicationContext(), "SignUp Success", Toast.LENGTH_SHORT).show();
                                 Intent back = new Intent(getApplicationContext(), LoginActivity.class);
                                 startActivity(back);
