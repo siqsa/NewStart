@@ -71,7 +71,7 @@ public class JoinActivity extends AppCompatActivity {
                             } else {
 
                                 //String iniNum=String.valueOf(b);
-                                myRef = database.getReference("user");
+                                myRef = database.getReference("use");
                                 String key = myRef.push().getKey();
                                 myRef.child(key).child("ID").setValue(email.getText().toString());
                                 myRef.child(key).child("Password").setValue(pwd.getText().toString());
