@@ -1,22 +1,13 @@
 package com.example.amdin.newstart;
 
 import android.app.AlarmManager;
-import android.app.PendingIntent;
-import android.app.TimePickerDialog;
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.TimePicker;
-import android.widget.Toast;
 
-import java.text.DateFormat;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
 
 /**
  * Created by tidy1 on 2017-11-28.
@@ -28,6 +19,9 @@ public class WriteActivity extends AppCompatActivity {
     private TextView alarm;
     AlarmManager alarm_manager;
     int hour,minute;
+    Calendar calendar;
+    int year, month, day;
+
    /* private TimePickerDialog.OnTimeSetListener listener=new TimePickerDialog.OnTimeSetListener() {
         @Override
         public void onTimeSet(TimePicker view, int hourOfDay, int  Minute) {
@@ -47,7 +41,7 @@ public class WriteActivity extends AppCompatActivity {
             else{
                 alarm_manager.set(AlarmManager.RTC,calendar.getTimeInMillis(),pending_intent);
                 alarm_manager.setRepeating(AlarmManager.RTC,calendar.getTimeInMillis(),(1000*60),pending_intent);
-            }
+            }/
             yes.setText(hour+"시"+minute+"분");
             Toast.makeText(getApplicationContext(),hour + "시" + minute + "분에 알림이 시작됩니다.", Toast.LENGTH_SHORT).show();
         }
@@ -64,10 +58,15 @@ public class WriteActivity extends AppCompatActivity {
     }
 
     public void setDate() {
-        Date now = new Date();
-        DateFormat format = DateFormat.getDateInstance(DateFormat.FULL, Locale.KOREA);
-        String getTime = format.format(now);
-        datetextView.setText(getTime);
+        calendar=Calendar.getInstance();
+        year = calendar.get(Calendar.YEAR);
+        month = calendar.get(Calendar.MONTH);
+        day = calendar.get(Calendar.DAY_OF_MONTH);
+
+        String date;
+        date = year + "년 " + month + "월 " + day + "일";
+        datetextView.setText(date);
+
     }
 
     public void submitDiary(View v) {
