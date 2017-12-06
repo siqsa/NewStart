@@ -35,11 +35,14 @@ public class DetailViewActivity extends AppCompatActivity {
                     editText.setFocusableInTouchMode(true);
                     editText.setClickable(true);
                     editText.setFocusable(true);
-                    showKeyboard(editText);
+                    //showKeyboard(editText);
                     button.setText("수정완료");
                 }
                 else if (currentText.equals("수정완료")) {
                     button.setText("수정하기");
+                    editText.setFocusableInTouchMode(true);
+                    editText.setClickable(true);
+                    editText.setFocusable(true);
                 }
             }
         });

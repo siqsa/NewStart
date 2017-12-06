@@ -18,7 +18,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Calendar;
-import java.util.Date;
 
 
 /**
@@ -32,8 +31,6 @@ public class JoinActivity extends AppCompatActivity {
     DatabaseReference myRef;
     private EditText email;
     private EditText pwd;
-    String userId;
-    Date date;
     Calendar calendar;
 
     @Override
@@ -43,10 +40,9 @@ public class JoinActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
         database = FirebaseDatabase.getInstance();
-        myRef = database.getReference("user");
+
         email = findViewById(R.id.emailEditText);
         pwd = findViewById(R.id.passwordEditText);
-        userId = "ID";
         calendar = Calendar.getInstance();
     }
 
@@ -55,6 +51,13 @@ public class JoinActivity extends AppCompatActivity {
         if (getEdit.getBytes().length <= 0) {
             Toast.makeText(this, "You should fill fields", Toast.LENGTH_SHORT).show();
         } else {
+            myRef = database.getReference("userinfo");
+            String key = myRef.push().getKey();
+            myRef.child(key).child("ID").setValue(email.getText().toString());
+            myRef.child(key).child("Number").setValue(1);
+
+            myRef = database.getReference("고유번호");
+
             mAuth.createUserWithEmailAndPassword(email.getText().toString(), pwd.getText().toString()).addOnCompleteListener(
                     this, new OnCompleteListener<AuthResult>() {
                         @Override
@@ -66,7 +69,7 @@ public class JoinActivity extends AppCompatActivity {
                                 String key = myRef.push().getKey();
                                 myRef.child(key).child("ID").setValue(email.getText().toString());
                                 myRef.child(key).child("Password").setValue(pwd.getText().toString());
-                                myRef.child(key).child("userKey").setValue(key);
+                                myRef.child(key).child("Number").setValue("고유번호");
                                 myRef.child(key).child("year").setValue(calendar.get(Calendar.YEAR));
                                 myRef.child(key).child("month").setValue(calendar.get(Calendar.MONTH));
                                 myRef.child(key).child("day").setValue(calendar.get(Calendar.DAY_OF_MONTH) + 1);
