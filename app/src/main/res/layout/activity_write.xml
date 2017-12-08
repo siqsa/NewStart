@@ -37,7 +37,7 @@
         android:lines="17"
         android:minLines="10"/>
     <TextView
-        android:id="@+id/alarm"
+        android:id="@+id/alarmText"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_margin="10dp"
