@@ -71,7 +71,8 @@ public class DetailViewActivity extends AppCompatActivity {
 
         editText = findViewById(R.id.DetailEditText);
         editText.setText(text);
-        editText.setEnabled(false);
+        editText.setInputType(0);
+        //editText.setEnabled(false);
 
         button = findViewById(R.id.DetaildViewButton);
         button.setOnClickListener(new View.OnClickListener() {
@@ -80,6 +81,7 @@ public class DetailViewActivity extends AppCompatActivity {
                 String currentText = button.getText().toString();
 
                 if (currentText.equals("수정하기")) {
+                    editText.setInputType(1);
                     editText.setEnabled(true);
                     button.setText("수정완료");
                 }
