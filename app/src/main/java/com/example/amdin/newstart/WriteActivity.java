@@ -1,10 +1,12 @@
 package com.example.amdin.newstart;
 
+import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -35,7 +37,9 @@ public class WriteActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     public FirebaseDatabase database;
     private PendingIntent pending_intent;
-    DatabaseReference myRef;
+    private DatabaseReference myRef;
+    private SharedPreferences sp;
+
    private TimePickerDialog.OnTimeSetListener listener=new TimePickerDialog.OnTimeSetListener() {
         @Override
         public void onTimeSet(TimePicker view, int hourOfDay, int  Minute) {
@@ -62,7 +66,11 @@ public class WriteActivity extends AppCompatActivity {
         diaryEditText = (EditText)findViewById(R.id.writeEditText);
         alarm=(TextView)findViewById(R.id.alarmText);
         database = FirebaseDatabase.getInstance();
-        myRef = database.getReference("고유번호");
+        sp = getSharedPreferences("myFile", Activity.MODE_PRIVATE);
+        Long value = sp.getLong("serial_number", 0);
+        myRef = database.getReference("serial_number").child(value.toString());
+
+
         alarm.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 TimePickerDialog dialog = new TimePickerDialog(WriteActivity.this, TimePickerDialog.THEME_HOLO_LIGHT,listener, 00, 00, false);
@@ -75,6 +83,7 @@ public class WriteActivity extends AppCompatActivity {
         calendar=Calendar.getInstance();
         year = calendar.get(Calendar.YEAR);
         month = calendar.get(Calendar.MONTH);
+       // month++;
         day = calendar.get(Calendar.DAY_OF_MONTH);
         String date;
         date = year + "년 " + month + "월 " + day + "일";
