@@ -33,7 +33,8 @@ public class DiaryListActivity extends AppCompatActivity {
     private DatabaseReference myRef;
     private SharedPreferences sp;
     private Long number;
-    private ArrayList<Item> item = new ArrayList<Item>();
+    private ArrayList<Item> item = new ArrayList<>();
+    private ItemAdapter adapter;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,9 +43,11 @@ public class DiaryListActivity extends AppCompatActivity {
         FirebaseUser user = mAuth.getCurrentUser();
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         //item = Item.createContactsList(20);
-        ItemAdapter adapter = new ItemAdapter(this, item);
+
+        adapter  = new ItemAdapter(this, item);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
         database = FirebaseDatabase.getInstance();
         sp = getSharedPreferences("myFile", Activity.MODE_PRIVATE);
         number = sp.getLong("serial_number", 0);
@@ -52,15 +55,17 @@ public class DiaryListActivity extends AppCompatActivity {
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
-                    String year =  snapshot.child("Year").getValue(String .class);
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    String year = snapshot.child("Year").getValue(String.class);
                     String month = snapshot.child("Month").getValue(String.class);
                     String day = snapshot.child("Day").getValue(String.class);
                     String diary = snapshot.child("Diary").getValue(String.class);
 
                     item.add(new Item(year, month, day, diary));
+                    adapter.notifyDataSetChanged();
                 }
             }
+
             @Override
             public void onCancelled(DatabaseError databaseError) {
 

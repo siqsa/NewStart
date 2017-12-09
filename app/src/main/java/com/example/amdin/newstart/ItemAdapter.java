@@ -81,6 +81,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {/
     public int getItemCount() {
         return mContacts.size();
     }
+
     public void removeItem(int p) {
         mContacts.remove(p);
         notifyItemRemoved(p);
