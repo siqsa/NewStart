@@ -40,18 +40,14 @@ public class DiaryListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_diary);
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
-
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         //item = Item.createContactsList(20);
         ItemAdapter adapter = new ItemAdapter(this, item);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
         database = FirebaseDatabase.getInstance();
-
         sp = getSharedPreferences("myFile", Activity.MODE_PRIVATE);
         number = sp.getLong("serial_number", 0);
-
         myRef = database.getReference("serial_number").child(number.toString());
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -61,11 +57,9 @@ public class DiaryListActivity extends AppCompatActivity {
                     int month = snapshot.child("Month").getValue(Integer.class);
                     int day = snapshot.child("Day").getValue(Integer.class);
                     String diary = snapshot.child("Diary").getValue(String.class);
-
                     item.add(new Item(year, month, day, diary));
                 }
             }
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
 

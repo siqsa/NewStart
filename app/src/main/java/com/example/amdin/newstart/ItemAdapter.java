@@ -71,7 +71,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {/
         Item contact = mContacts.get(position);
         // Set item views based on your views and data model
         TextView textView = viewHolder.showDate;
-        String a=contact.getYear()+contact.getMonth()+contact.getDay();
+        String a=contact.getYear()+"년"+contact.getMonth()+"월"+contact.getDay()+"일";
         textView.setText(a);
         TextView textView1 = viewHolder.showContents;
         textView1.setText(contact.getText());
