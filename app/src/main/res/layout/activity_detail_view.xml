@@ -2,7 +2,8 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#72D3F7">
 
     <TextView
         android:id="@+id/DetaildateTextView"
@@ -19,7 +20,7 @@
         android:layout_marginHorizontal="20dp"
         android:layout_above="@+id/DetailEditText"
         android:layout_alignRight="@+id/DetaildateTextView"
-        android:background="@drawable/submitbtn"
+        android:background="@drawable/writebtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true" />

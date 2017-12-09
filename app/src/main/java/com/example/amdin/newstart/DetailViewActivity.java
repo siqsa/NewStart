@@ -87,6 +87,7 @@ public class DetailViewActivity extends AppCompatActivity {
                     myRef.child(key).child("Diary").setValue(editText.getText().toString());
                     button.setText("수정하기");
                     editText.setEnabled(false);
+                    finish();
                 }
             }
         });
