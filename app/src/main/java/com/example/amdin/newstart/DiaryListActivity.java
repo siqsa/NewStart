@@ -96,5 +96,6 @@ public class DiaryListActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), "Sign out", Toast.LENGTH_SHORT).show();
         Intent a = new Intent(getApplicationContext(), LoginActivity.class);
         startActivity(a);
+        finish();
     }
 }
