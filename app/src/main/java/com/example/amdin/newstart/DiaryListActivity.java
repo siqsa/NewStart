@@ -1,6 +1,8 @@
 package com.example.amdin.newstart;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import android.support.v7.app.AppCompatActivity;
@@ -13,6 +15,11 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -22,37 +29,71 @@ import java.util.ArrayList;
 
 public class DiaryListActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
+    private FirebaseDatabase database;
+    private DatabaseReference myRef;
+    private SharedPreferences sp;
+    private Long number;
+    private ArrayList<Item> item = new ArrayList<Item>();
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_diary);
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
-        ArrayList<Item> item;
-        RecyclerView recyclerView=(RecyclerView)findViewById(R.id.recyclerView);
-        item =Item.createContactsList(20);
-        ItemAdapter adapter=new ItemAdapter(this,item);
+
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        //item = Item.createContactsList(20);
+        ItemAdapter adapter = new ItemAdapter(this, item);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-    }
-    public boolean onCreateOptionsMenu(Menu menu){
-        MenuInflater inflater=getMenuInflater();
-        inflater.inflate(R.menu.write_btn,menu);
-        return super.onCreateOptionsMenu(menu);
 
+        database = FirebaseDatabase.getInstance();
+
+        sp = getSharedPreferences("myFile", Activity.MODE_PRIVATE);
+        number = sp.getLong("serial_number", 0);
+
+        myRef = database.getReference("serial_number").child(number.toString());
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
+                    int year = snapshot.child("Year").getValue(Integer.class);
+                    int month = snapshot.child("Month").getValue(Integer.class);
+                    int day = snapshot.child("Day").getValue(Integer.class);
+                    String diary = snapshot.child("Diary").getValue(String.class);
+
+                    item.add(new Item(year, month, day, diary));
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
-    public boolean onOptionsItemSelected(MenuItem item){
-        switch (item.getItemId()){
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.write_btn, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
             case R.id.action_add:
-                Intent intent=new Intent(getApplicationContext(),WriteActivity.class);
+                Intent intent = new Intent(getApplicationContext(), WriteActivity.class);
                 startActivity(intent);
                 return true;
-                default:return super.onOptionsItemSelected(item);
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
-    public void onBackPressed(){
+
+    public void onBackPressed() {
         mAuth.signOut();
-        Toast.makeText(getApplicationContext(),"Sign out",Toast.LENGTH_SHORT).show();
-       Intent a =new Intent(getApplicationContext(),LoginActivity.class);
-       startActivity(a);
+        Toast.makeText(getApplicationContext(), "Sign out", Toast.LENGTH_SHORT).show();
+        Intent a = new Intent(getApplicationContext(), LoginActivity.class);
+        startActivity(a);
     }
 }
