@@ -53,10 +53,11 @@ public class DiaryListActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
-                    int year = snapshot.child("Year").getValue(Integer.class);
-                    int month = snapshot.child("Month").getValue(Integer.class);
-                    int day = snapshot.child("Day").getValue(Integer.class);
+                    String year =  snapshot.child("Year").getValue(String .class);
+                    String month = snapshot.child("Month").getValue(String.class);
+                    String day = snapshot.child("Day").getValue(String.class);
                     String diary = snapshot.child("Diary").getValue(String.class);
+
                     item.add(new Item(year, month, day, diary));
                 }
             }

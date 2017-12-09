@@ -91,9 +91,9 @@ public class WriteActivity extends AppCompatActivity {
     }
     public void submitDiary(View v) {
         String key = myRef.push().getKey();
-        myRef.child(key).child("Year").setValue(year);
-        myRef.child(key).child("Month").setValue(month);
-        myRef.child(key).child("Day").setValue(day);
+        myRef.child(key).child("Year").setValue(String.valueOf(year));
+        myRef.child(key).child("Month").setValue(String.valueOf(month));
+        myRef.child(key).child("Day").setValue(String.valueOf(day));
         myRef.child(key).child("Diary").setValue(diaryEditText.getText().toString());
     }
 }

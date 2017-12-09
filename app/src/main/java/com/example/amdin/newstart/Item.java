@@ -4,27 +4,27 @@ import java.util.ArrayList;
  * Created by amdin on 2017-11-22.
  */
 public class Item {
-    int year;
-    int month;
-    int day;
+    String year;
+    String month;
+    String day;
     String text;
 
-    public Item(int year, int month, int day, String text) {
+    public Item(String year, String month, String day, String text) {
         this.year = year;
         this.month = month;
         this.day = day;
         this.text = text;
     }
 
-    public void setYear(int year) {
+    public void setYear(String year) {
         this.year = year;
     }
 
-    public void setMonth(int month) {
+    public void setMonth(String month) {
         this.month = month;
     }
 
-    public void setDay(int day) {
+    public void setDay(String day) {
         this.day = day;
     }
 
@@ -32,15 +32,15 @@ public class Item {
         this.text = text;
     }
 
-    public int getYear() {
+    public String getYear() {
         return year;
     }
 
-    public int getMonth() {
+    public String getMonth() {
         return month;
     }
 
-    public int getDay() {
+    public String getDay() {
         return day;
     }
 
