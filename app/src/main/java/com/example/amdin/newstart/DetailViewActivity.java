@@ -1,5 +1,4 @@
 package com.example.amdin.newstart;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
@@ -16,27 +15,21 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
 public class DetailViewActivity extends AppCompatActivity {
-
     Button button;
     EditText editText;
     TextView dateTextView;
-
     private FirebaseDatabase database;
     private DatabaseReference myRef;
     private SharedPreferences sp;
     private Item item;
     private String key = " ";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_view);
-
         Intent intent = getIntent();
         item = (Item) intent.getSerializableExtra("item");
-
         database = FirebaseDatabase.getInstance();
         sp = getSharedPreferences("myFile", 00);
         Long value = sp.getLong("serial_number", 0);
@@ -53,33 +46,24 @@ public class DetailViewActivity extends AppCompatActivity {
                     if (year.equals(item.year) && month.equals(item.month) && day.equals(item.getDay()) &&  diary.equals(item.getText())) {
                         key = snapshot.getKey();
                     }
-
                 }
             }
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
             }
         });
-
         String date = item.getYear() + "년 " + item.getMonth() + "월 " + item.getDay() + "일";
         String text = item.getText();
-
         dateTextView = findViewById(R.id.DetaildateTextView);
         dateTextView.setText(date);
-
         editText = findViewById(R.id.DetailEditText);
         editText.setText(text);
         editText.setInputType(0);
-        //editText.setEnabled(false);
-
         button = findViewById(R.id.DetaildViewButton);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String currentText = button.getText().toString();
-
                 if (currentText.equals("수정하기")) {
                     editText.setInputType(1);
                     editText.setEnabled(true);
@@ -94,7 +78,6 @@ public class DetailViewActivity extends AppCompatActivity {
             }
         });
     }
-
     @Override
     public void onBackPressed() {
         super.onBackPressed();

@@ -29,8 +29,6 @@ public class BroadCastB extends Service {
                 .build();
         //set up the notification call command
         notify_manager.notify(0,notification_popup);
-
-
        return START_NOT_STICKY;
     }
 }

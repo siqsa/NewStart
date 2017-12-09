@@ -1,5 +1,4 @@
 package com.example.amdin.newstart;
-
 import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -21,11 +20,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Calendar;
-
 /**
  * Created by tidy1 on 2017-11-28.
  */
-
 public class WriteActivity extends AppCompatActivity {
     public TextView datetextView;
     public EditText diaryEditText;

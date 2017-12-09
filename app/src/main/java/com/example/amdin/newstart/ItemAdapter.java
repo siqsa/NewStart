@@ -29,7 +29,6 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {/
         public TextView showContents;
         private ItemAdapter mContacts;
         private Context context;
-
         public ViewHolder(Context context, View itemView, ItemAdapter contacts) {
             // Stores the itemView in a public final member variable that can be used
             // to access the context from any ViewHolder instance.
@@ -40,26 +39,21 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {/
             this.mContacts = contacts;
         }
     }
-
     private List<Item> mContacts;
     // Store the context for easy access
     private Context mContext;
-
     // Pass in the contact array into the constructor
     public ItemAdapter(Context context, List<Item> contacts) {
         mContacts = contacts;
         mContext = context;
     }
-
     // Easy access to the context object in the recyclerview
     private Context getContext() {
         return mContext;
     }
-
     // Usually involves inflating a layout from XML and returning the holder
     @Override
     public ItemAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {//아이템을 위한 뷰를 만들어서 뷰홀더에 넣어서 리턴을 한다.
-
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
         // Inflate the custom layout
@@ -68,7 +62,6 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {/
         ViewHolder viewHolder = new ViewHolder(context, contactView, this);
         return viewHolder;
     }
-
     // Involves populating data into the item through holder
     @Override
     public void onBindViewHolder(ItemAdapter.ViewHolder viewHolder, int position) {//뷰홀더에 뷰에 position에 해당하는 데이터를 입력한다.
@@ -90,17 +83,9 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {/
             }
         });
     }
-
-    // Returns the total count of items in the list
     @Override
     public int getItemCount() {
         return mContacts.size();
-    }
-
-    public void removeItem(int p) {
-        mContacts.remove(p);
-        notifyItemRemoved(p);
-
     }
 
 }

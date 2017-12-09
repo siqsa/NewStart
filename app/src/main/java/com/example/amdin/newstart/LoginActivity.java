@@ -22,23 +22,18 @@ import com.google.firebase.database.ValueEventListener;
 
 
 public class LoginActivity extends AppCompatActivity {
-
     private FirebaseAuth mAuth;
     private FirebaseDatabase database;
     private DatabaseReference myRef;
     private SharedPreferences sp;
     String email;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
         mAuth = FirebaseAuth.getInstance();
         sp = getSharedPreferences("myFile", Activity.MODE_PRIVATE);
-
     }
-
     public void onButtonLogin(View v) {
         email = ((EditText) findViewById(R.id.emailEditText)).getText().toString();
         String password = ((EditText) findViewById(R.id.passwordEditText)).getText().toString();
@@ -55,7 +50,6 @@ public class LoginActivity extends AppCompatActivity {
                             // 고유번호 가져오기.
                             database = FirebaseDatabase.getInstance();
                             myRef = database.getReference("user");
-
                             myRef.addValueEventListener(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(DataSnapshot dataSnapshot) {
@@ -63,52 +57,38 @@ public class LoginActivity extends AppCompatActivity {
                                         String id = snapshot.child("ID").getValue(String.class);
                                         if (id.equals(email)) {
                                             Long value = snapshot.child("Number").getValue(Long.class);
-
                                             Toast.makeText(LoginActivity.this, "데이터 로딩 성공", Toast.LENGTH_SHORT).show();
-
                                             SharedPreferences.Editor editor = sp.edit();
                                             editor.putLong("serial_number", value);
                                             editor.commit();
-
                                             break;
-
                                         }
-
-
                                     }
                                 }
                                 @Override
                                 public void onCancelled(DatabaseError error) {
                                 }
                             });
-
                             Intent intent = new Intent(LoginActivity.this, DiaryListActivity.class);
                             startActivity(intent);
-
                         }
                     }
                 });
     }
 
         public void onClickSingIn(View v) {
-
         Intent intent = new Intent(getApplicationContext(), JoinActivity.class);
         startActivity(intent);
-
-
     }
 
     @Override
     public void onStart() {
         super.onStart();
     }
-
     @Override
     public void onStop() {
         super.onStop();
-
     }
-
     public void onBackPressed() {
         super.onBackPressed();
         finish();

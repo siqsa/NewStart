@@ -17,7 +17,6 @@ public class LoadingActivity extends AppCompatActivity {
                                     Intent intent = new Intent(getBaseContext(),LoginActivity.class);
                                     startActivity(intent);
                                     finish();}}
-
                 ,2000);{}
     }
 }
