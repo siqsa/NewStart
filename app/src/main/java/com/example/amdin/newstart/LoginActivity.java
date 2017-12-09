@@ -79,7 +79,6 @@ public class LoginActivity extends AppCompatActivity {
                                 }
                                 @Override
                                 public void onCancelled(DatabaseError error) {
-                                    Toast.makeText(LoginActivity.this, "데이터 로딩 에러", Toast.LENGTH_SHORT).show();
                                 }
                             });
 

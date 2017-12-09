@@ -49,12 +49,13 @@ public class DiaryListActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         database = FirebaseDatabase.getInstance();
-        sp = getSharedPreferences("myFile", Activity.MODE_PRIVATE);
+        sp = getSharedPreferences("myFile", 00);
         number = sp.getLong("serial_number", 0);
         myRef = database.getReference("serial_number").child(number.toString());
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                item.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     String year = snapshot.child("Year").getValue(String.class);
                     String month = snapshot.child("Month").getValue(String.class);

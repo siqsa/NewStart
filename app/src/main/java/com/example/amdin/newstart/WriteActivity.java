@@ -66,7 +66,7 @@ public class WriteActivity extends AppCompatActivity {
         diaryEditText = (EditText)findViewById(R.id.writeEditText);
         alarm=(TextView)findViewById(R.id.alarmText);
         database = FirebaseDatabase.getInstance();
-        sp = getSharedPreferences("myFile", Activity.MODE_PRIVATE);
+        sp = getSharedPreferences("myFile", 00);
         Long value = sp.getLong("serial_number", 0);
         myRef = database.getReference("serial_number").child(value.toString());
 
