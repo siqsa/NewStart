@@ -1,23 +1,46 @@
 package com.example.amdin.newstart;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class DetailViewActivity extends AppCompatActivity {
 
     Button button;
     EditText editText;
-    private InputMethodManager imm; //전역변수
+    TextView dateTextView;
+
+    private FirebaseDatabase database;
+    private DatabaseReference myRef;
+    private SharedPreferences sp;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_view);
 
-        String text = "안\n녕\n하\n세\n요";
+        Intent intent = getIntent();
+        Item item = (Item) intent.getSerializableExtra("item");
+
+        database = FirebaseDatabase.getInstance();
+        sp = getSharedPreferences("myFile", 00);
+        Long value = sp.getLong("serial_number", 0);
+        myRef = database.getReference("serial_number").child(value.toString());
+
+        String date = item.getYear() + "년 " + item.getMonth() + "월 " + item.getDay() + "일";
+        String text = item.getText();
+
+        dateTextView = findViewById(R.id.DetaildateTextView);
+        dateTextView.setText(date);
 
         editText = findViewById(R.id.DetailEditText);
         editText.setText(text);
@@ -39,5 +62,11 @@ public class DetailViewActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 }

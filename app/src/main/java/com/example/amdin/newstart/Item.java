@@ -1,9 +1,10 @@
 package com.example.amdin.newstart;
+import java.io.Serializable;
 import java.util.ArrayList;
 /**
  * Created by amdin on 2017-11-22.
  */
-public class Item {
+public class Item implements Serializable {
     String year;
     String month;
     String day;
