@@ -44,7 +44,7 @@
             android:onClick="onCancel"
             android:textColor="#FFFFFF"
             android:background="@drawable/submitbtn2"
-            android:text="Cencel" />
+            android:text="Cancel" />
 
         <Button
             android:id="@+id/joinButton"
@@ -53,7 +53,7 @@
             android:layout_below="@id/passwordEditText"
             android:layout_centerHorizontal="true"
             android:textColor="#FFFFFF"
-            android:text="Join"
+            android:text="Submit"
 
             android:onClick="onJoin"
             android:background="@drawable/submitbtn2"
