@@ -27,6 +27,7 @@ public class DetailViewActivity extends AppCompatActivity {
     private DatabaseReference myRef;
     private SharedPreferences sp;
     private Item item;
+    private String key = " ";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,18 +41,19 @@ public class DetailViewActivity extends AppCompatActivity {
         sp = getSharedPreferences("myFile", 00);
         Long value = sp.getLong("serial_number", 0);
         myRef = database.getReference("serial_number").child(value.toString());
-        myRef.child("Day").equalTo(item.getDay()).addListenerForSingleValueEvent(new ValueEventListener() {
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     String year = snapshot.child("Year").getValue(String.class);
                     String month = snapshot.child("Month").getValue(String.class);
+                    String day = snapshot.child("Day").getValue(String.class);
                     String diary = snapshot.child("Diary").getValue(String.class);
 
-                    if (year.equals(item.year) && month.equals(item.month) && diary.equals(item.getText())) {
-
+                    if (year.equals(item.year) && month.equals(item.month) && day.equals(item.getDay()) &&  diary.equals(item.getText())) {
+                        key = snapshot.getKey();
                     }
-                    Toast.makeText(DetailViewActivity.this, snapshot.getKey(), Toast.LENGTH_SHORT).show();
+
                 }
             }
 
@@ -82,6 +84,7 @@ public class DetailViewActivity extends AppCompatActivity {
                     button.setText("수정완료");
                 }
                 else if (currentText.equals("수정완료")) {
+                    myRef.child(key).child("Diary").setValue(editText.getText().toString());
                     button.setText("수정하기");
                     editText.setEnabled(false);
                 }
