@@ -41,7 +41,7 @@ public class DiaryListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_diary);
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        RecyclerView recyclerView = findViewById(R.id.recyclerView);
         //item = Item.createContactsList(20);
 
         adapter  = new ItemAdapter(this, item);
@@ -61,7 +61,6 @@ public class DiaryListActivity extends AppCompatActivity {
                     String month = snapshot.child("Month").getValue(String.class);
                     String day = snapshot.child("Day").getValue(String.class);
                     String diary = snapshot.child("Diary").getValue(String.class);
-
                     item.add(new Item(year, month, day, diary));
                     adapter.notifyDataSetChanged();
                 }

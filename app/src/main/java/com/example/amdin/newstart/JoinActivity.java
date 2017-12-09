@@ -43,19 +43,12 @@ public class JoinActivity extends AppCompatActivity {
         setContentView(R.layout.activity_join);
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
-
-
         database = FirebaseDatabase.getInstance();
-
         email = findViewById(R.id.emailEditText);
         pwd = findViewById(R.id.passwordEditText);
-
         calendar = Calendar.getInstance();
     }
-
     public void onJoin(View v) {
-
-
         String getEdit = email.getText().toString();
         if (getEdit.getBytes().length <= 0) {
             Toast.makeText(this, "You should fill fields", Toast.LENGTH_SHORT).show();

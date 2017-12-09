@@ -69,8 +69,6 @@ public class WriteActivity extends AppCompatActivity {
         sp = getSharedPreferences("myFile", 00);
         Long value = sp.getLong("serial_number", 0);
         myRef = database.getReference("serial_number").child(value.toString());
-
-
         alarm.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 TimePickerDialog dialog = new TimePickerDialog(WriteActivity.this, TimePickerDialog.THEME_HOLO_LIGHT,listener, 00, 00, false);
@@ -87,7 +85,6 @@ public class WriteActivity extends AppCompatActivity {
         String date;
         date = year + "년 " + month + "월 " + day + "일";
         datetextView.setText(date);
-
     }
     public void submitDiary(View v) {
         String key = myRef.push().getKey();
@@ -95,5 +92,6 @@ public class WriteActivity extends AppCompatActivity {
         myRef.child(key).child("Month").setValue(String.valueOf(month));
         myRef.child(key).child("Day").setValue(String.valueOf(day));
         myRef.child(key).child("Diary").setValue(diaryEditText.getText().toString());
+        finish();
     }
 }
