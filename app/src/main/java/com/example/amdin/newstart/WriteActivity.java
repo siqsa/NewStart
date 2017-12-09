@@ -82,8 +82,7 @@ public class WriteActivity extends AppCompatActivity {
     public void setDate() {
         calendar=Calendar.getInstance();
         year = calendar.get(Calendar.YEAR);
-        month = calendar.get(Calendar.MONTH);
-       // month++;
+        month = calendar.get(Calendar.MONTH)+1;
         day = calendar.get(Calendar.DAY_OF_MONTH);
         String date;
         date = year + "년 " + month + "월 " + day + "일";
