@@ -38,6 +38,7 @@
         android:scrollbars="vertical"
         android:lines="17"
         android:minLines="10"/>
+
     <TextView
         android:id="@+id/alarmText"
         android:layout_width="match_parent"

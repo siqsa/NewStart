@@ -56,6 +56,7 @@ public class DiaryListActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 item.clear();
+                adapter.notifyDataSetChanged();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     String year = snapshot.child("Year").getValue(String.class);
                     String month = snapshot.child("Month").getValue(String.class);
@@ -69,7 +70,6 @@ public class DiaryListActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
             }
         });
     }

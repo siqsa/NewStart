@@ -1,4 +1,5 @@
 package com.example.amdin.newstart;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +16,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
 public class DetailViewActivity extends AppCompatActivity {
     Button button;
     EditText editText;
@@ -24,6 +26,7 @@ public class DetailViewActivity extends AppCompatActivity {
     private SharedPreferences sp;
     private Item item;
     private String key = " ";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,11 +46,12 @@ public class DetailViewActivity extends AppCompatActivity {
                     String day = snapshot.child("Day").getValue(String.class);
                     String diary = snapshot.child("Diary").getValue(String.class);
 
-                    if (year.equals(item.year) && month.equals(item.month) && day.equals(item.getDay()) &&  diary.equals(item.getText())) {
+                    if (item.getYear().equals(year) && item.getMonth().equals(month) && item.getDay().equals(day) && item.getText().equals(diary)) {
                         key = snapshot.getKey();
                     }
                 }
             }
+
             @Override
             public void onCancelled(DatabaseError databaseError) {
             }
@@ -56,28 +60,22 @@ public class DetailViewActivity extends AppCompatActivity {
         String text = item.getText();
         dateTextView = findViewById(R.id.DetaildateTextView);
         dateTextView.setText(date);
+
         editText = findViewById(R.id.DetailEditText);
         editText.setText(text);
-        editText.setInputType(0);
+
         button = findViewById(R.id.DetaildViewButton);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String currentText = button.getText().toString();
-                if (currentText.equals("수정하기")) {
-                    editText.setInputType(1);
-                    editText.setEnabled(true);
-                    button.setText("수정완료");
-                }
-                else if (currentText.equals("수정완료")) {
-                    myRef.child(key).child("Diary").setValue(editText.getText().toString());
-                    button.setText("수정하기");
-                    editText.setEnabled(false);
-                    finish();
-                }
+                myRef.child(key).child("Diary").setValue(editText.getText().toString());
+                editText.setEnabled(false);
+                finish();
+
             }
         });
     }
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
