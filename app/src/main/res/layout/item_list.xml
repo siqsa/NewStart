@@ -18,10 +18,9 @@
     <TextView
         android:id="@+id/date"
         android:layout_width="match_parent"
-        android:layout_height="19dp"
-        android:layout_weight="0.2"
+        android:layout_weight="0.1"
         android:background="@drawable/datebackground"
-        android:paddingTop="60dp"
+        android:paddingTop="10dp"
         android:text="2017년 11월 29일"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
