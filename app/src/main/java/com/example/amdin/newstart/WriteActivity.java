@@ -37,6 +37,7 @@ public class WriteActivity extends AppCompatActivity {
     private DatabaseReference myRef;
     private SharedPreferences sp;
 
+
    private TimePickerDialog.OnTimeSetListener listener=new TimePickerDialog.OnTimeSetListener() {
         @Override
         public void onTimeSet(TimePicker view, int hourOfDay, int  Minute) {
@@ -44,15 +45,16 @@ public class WriteActivity extends AppCompatActivity {
             minute=Minute;
             Intent intent=new Intent(getApplicationContext(),BroadCastA.class);
             alarm_manager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
-            Calendar calendar=Calendar.getInstance();
+                       Calendar calendar=Calendar.getInstance();
             calendar.set(Calendar.HOUR_OF_DAY,hour);
             calendar.set(Calendar.MINUTE,minute);
             calendar.set(Calendar.SECOND,0);
             intent.putExtra("extra","Time");
-            pending_intent = PendingIntent.getBroadcast(WriteActivity.this,0,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+            pending_intent = PendingIntent.getBroadcast(WriteActivity.this,(int)calendar.getTimeInMillis(),intent,PendingIntent.FLAG_UPDATE_CURRENT);
                 alarm_manager.set(AlarmManager.RTC,calendar.getTimeInMillis(),pending_intent);
-                alarm_manager.setRepeating(AlarmManager.RTC,calendar.getTimeInMillis(),(1000*60),pending_intent);
+               // alarm_manager.setRepeating(AlarmManager.RTC,calendar.getTimeInMillis(),(1000*60),pending_intent);
                                  Toast.makeText(getApplicationContext(),hour + "시" + minute + "분에 알림이 시작됩니다.", Toast.LENGTH_SHORT).show();
+                                 alarm.setText(hour+"시"+minute+"분");
         }
     };
     @Override
@@ -65,6 +67,7 @@ public class WriteActivity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         sp = getSharedPreferences("myFile", 00);
         Long value = sp.getLong("serial_number", 0);
+
         myRef = database.getReference("serial_number").child(value.toString());
         alarm.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
