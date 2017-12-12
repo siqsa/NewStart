@@ -19,7 +19,6 @@ public class BroadCastB extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         SharedPreferences sp;
         sp=getSharedPreferences("myFile",0);
-
       String text=sp.getString("text","");
         NotificationManager notify_manager =(NotificationManager)getSystemService(NOTIFICATION_SERVICE);
         //set up an intent that goes to the main activity

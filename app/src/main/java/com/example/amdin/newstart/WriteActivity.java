@@ -49,8 +49,7 @@ public class WriteActivity extends AppCompatActivity {
             calendar.set(Calendar.HOUR_OF_DAY,hour);
             calendar.set(Calendar.MINUTE,minute);
             calendar.set(Calendar.SECOND,0);
-
-            pending_intent = PendingIntent.getBroadcast(WriteActivity.this,(int)calendar.getTimeInMillis(),intent,PendingIntent.FLAG_UPDATE_CURRENT);
+            pending_intent = PendingIntent.getBroadcast(WriteActivity.this,0,intent,PendingIntent.FLAG_UPDATE_CURRENT);
                 alarm_manager.setExact(AlarmManager.RTC,calendar.getTimeInMillis(),pending_intent);
                // alarm_manager.setRepeating(AlarmManager.RTC,calendar.getTimeInMillis(),(1000*60),pending_intent);
                                  Toast.makeText(getApplicationContext(),hour + "시" + minute + "분에 알림이 시작됩니다.", Toast.LENGTH_SHORT).show();
@@ -67,7 +66,6 @@ public class WriteActivity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         sp = getSharedPreferences("myFile", 0);
         Long value = sp.getLong("serial_number", 0);
-
         myRef = database.getReference("serial_number").child(value.toString());
         alarm.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){

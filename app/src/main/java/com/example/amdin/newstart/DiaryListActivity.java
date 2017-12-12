@@ -47,7 +47,6 @@ public class DiaryListActivity extends AppCompatActivity {
         adapter  = new ItemAdapter(this, item);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
         database = FirebaseDatabase.getInstance();
         sp = getSharedPreferences("myFile", 00);
         number = sp.getLong("serial_number", 0);
@@ -72,7 +71,12 @@ public class DiaryListActivity extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {
             }
         });
+
+
     }
+
+
+
 
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
