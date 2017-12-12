@@ -49,9 +49,9 @@ public class WriteActivity extends AppCompatActivity {
             calendar.set(Calendar.HOUR_OF_DAY,hour);
             calendar.set(Calendar.MINUTE,minute);
             calendar.set(Calendar.SECOND,0);
-            intent.putExtra("extra","Time");
+
             pending_intent = PendingIntent.getBroadcast(WriteActivity.this,(int)calendar.getTimeInMillis(),intent,PendingIntent.FLAG_UPDATE_CURRENT);
-                alarm_manager.set(AlarmManager.RTC,calendar.getTimeInMillis(),pending_intent);
+                alarm_manager.setExact(AlarmManager.RTC,calendar.getTimeInMillis(),pending_intent);
                // alarm_manager.setRepeating(AlarmManager.RTC,calendar.getTimeInMillis(),(1000*60),pending_intent);
                                  Toast.makeText(getApplicationContext(),hour + "시" + minute + "분에 알림이 시작됩니다.", Toast.LENGTH_SHORT).show();
                                  alarm.setText(hour+"시"+minute+"분");
@@ -65,7 +65,7 @@ public class WriteActivity extends AppCompatActivity {
         diaryEditText = (EditText)findViewById(R.id.writeEditText);
         alarm=(TextView)findViewById(R.id.alarmText);
         database = FirebaseDatabase.getInstance();
-        sp = getSharedPreferences("myFile", 00);
+        sp = getSharedPreferences("myFile", 0);
         Long value = sp.getLong("serial_number", 0);
 
         myRef = database.getReference("serial_number").child(value.toString());
@@ -92,6 +92,10 @@ public class WriteActivity extends AppCompatActivity {
         myRef.child(key).child("Month").setValue(String.valueOf(month));
         myRef.child(key).child("Day").setValue(String.valueOf(day));
         myRef.child(key).child("Diary").setValue(diaryEditText.getText().toString());
+        String context=diaryEditText.getText().toString();
+        SharedPreferences.Editor contextEditor = sp.edit();
+       contextEditor.putString("text", context);
+        contextEditor.commit();
         finish();
     }
 }

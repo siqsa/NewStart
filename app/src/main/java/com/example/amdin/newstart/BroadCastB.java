@@ -5,6 +5,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.IBinder;
 
 /**
@@ -16,13 +17,17 @@ public class BroadCastB extends Service {
         return null;
     }
     public int onStartCommand(Intent intent, int flags, int startId) {
+        SharedPreferences sp;
+        sp=getSharedPreferences("myFile",0);
+
+      String text=sp.getString("text","");
         NotificationManager notify_manager =(NotificationManager)getSystemService(NOTIFICATION_SERVICE);
         //set up an intent that goes to the main activity
         Intent intent_main_activity = new Intent(this.getApplicationContext(),DiaryListActivity.class);
         //make the notification parameters
         PendingIntent pending_intent_main_activity=PendingIntent.getActivity(this,0,intent_main_activity,0);
-        Notification notification_popup=new Notification.Builder(this).setContentTitle("어제의 일기로")
-                .setContentText("피드백을 해보세요!")
+        Notification notification_popup=new Notification.Builder(this).setContentTitle("어제의 일기")
+                .setContentText(text)
                 .setContentIntent(pending_intent_main_activity)
                 .setSmallIcon(R.drawable.common_google_signin_btn_icon_dark)
                 .setAutoCancel(true)
